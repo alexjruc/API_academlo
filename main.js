@@ -80,14 +80,33 @@ function handleFilter(allProducts){
 	})
 }
 
+function openCloseMenu() {
+	const openMenu = document.querySelector(".bxs-dashboard");
+	const closeMenu = document.querySelector(".bxs-x-circle");
+	const menu = document.querySelector(".navbar_menu")
+
+	openMenu.addEventListener("click", function () {
+		openMenu.style.display = "none"
+		closeMenu.style.display = "block"
+		menu.classList.add("navbar_menu--show")
+	})
+
+	closeMenu.addEventListener("click", function () {
+		closeMenu.style.display = "none"
+		openMenu.style.display = "block"
+		menu.classList.remove("navbar_menu--show")
+	})
+}
+
 
 async function main() {
-	
+	openCloseMenu()
 	const allProducts = await getProducts();
 	console.log(allProducts);
 	printProducts(allProducts);
 	handleFilter(allProducts);
 	load()
+
 }
 
 
