@@ -126,7 +126,7 @@ function printCartProducts(db) {
 							<h4>${productCart.name}</h4>
 							<p>stock: ${productCart.quantity} | $${productCart.price}.00</p>
 							<h4>subtotal: ${productCart.price * productCart.amount}</h4>
-							<div class="cart_shopping_options">
+							<div class="cart_shopping_options" id="${productCart.id}">
 								<i class='bx bxs-plus-circle'></i>
 								<span>${productCart.amount} units</span>
 								<i class='bx bxs-checkbox-minus'></i>
@@ -140,6 +140,22 @@ function printCartProducts(db) {
 		cart_shopping.innerHTML = html
 }
 
+function printTotal(db) {
+	const totalItems = document.querySelector("#totalItems")
+		const totalCash = document.querySelector("#totalCash")
+
+		let items = 0;
+		let cash = 0;
+
+		for (const product of Object.values(db.cart)) {
+			items += product.amount;
+			cash += product.amount * product.price
+		}
+
+		totalItems.textContent = `${items} items`
+		totalCash.textContent = `$${cash}.00`
+}
+
 function handlerCartProdcuts(db) {
 	document.querySelector(".products").addEventListener("click", (e) => {
 		if(e.target.classList.contains("bx-plus")){ 
@@ -148,6 +164,8 @@ function handlerCartProdcuts(db) {
 			let productFound = db.allProducts.find((product) => product.id === id);
 			
 			if(db.cart[id]){
+				if(db.cart[id].amount === db.cart[id].quantity)
+				return alert(`No hay mas en stock`)
 				db.cart[id].amount += 1
 			}else {
 				db.cart[id] = {...productFound,
@@ -158,6 +176,43 @@ function handlerCartProdcuts(db) {
 
 		setLocalStorage("cart", db.cart)
 		printCartProducts(db);
+		printTotal(db)		
+	})
+}
+
+function handleOptionsCart(db) {
+	const cartShopping = document.querySelector(".cart_shopping")
+	
+	cartShopping.addEventListener("click", (e) => {
+		if(e.target.classList.contains("bxs-plus-circle")) {
+			const id = Number(e.target.parentElement.id);
+			if(db.cart[id].amount === db.cart[id].quantity){
+				return alert(`No hay mas en stock`)
+			}else {
+				db.cart[id].amount += 1
+			}
+		}
+
+		if(e.target.classList.contains("bxs-checkbox-minus")) {
+			const id = Number(e.target.parentElement.id)
+			if (db.cart[id].amount === 1) {
+				const response = confirm("seguro quieres eliminar este producto?")
+				if (!response) return
+				delete db.cart[id]
+			} else {
+				db.cart[id].amount -= 1
+			}
+
+		}
+		if(e.target.classList.contains("bxs-trash")) {
+			const id = Number(e.target.parentElement.id)
+			const response = confirm("seguro quieres eliminar este producto?")
+			if (!response) return
+			delete db.cart[id]
+		}
+		setLocalStorage("cart", db.cart)
+		printCartProducts(db)
+		printTotal(db)
 	})
 }
 async function main() {
@@ -172,7 +227,8 @@ async function main() {
 	handleShowCart()
 	handlerCartProdcuts(db);
 	printCartProducts(db)
-		
+	handleOptionsCart(db)
+	printTotal(db)
 	//load()
 }
 

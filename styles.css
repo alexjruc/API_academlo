@@ -323,7 +323,26 @@ a:hover {
 .cart_total{
     background-color: yellow ;
     height: 25%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
 }
+
+.cart_total_info {
+    background-color: aqua;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+
+}
+
+.button_buy{
+    cursor: pointer;
+    padding: 1rem;
+}
+
 
 .container_info {
     background-color: hsl(0, 0%, 90%);
