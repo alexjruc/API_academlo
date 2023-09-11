@@ -215,9 +215,40 @@ function handleOptionsCart(db) {
 		printTotal(db)
 	})
 }
+
+function buyCart(db) {
+	const buy = document.querySelector(".button_buy");
+	
+	buy.addEventListener("click", () => {
+		let remainingProducts = [];
+		
+		for (const product of db.allProducts) {
+			if(db.cart[product.id]){
+				remainingProducts.push({
+					...product,
+					quantity: product.quantity - db.cart[product.id].amount
+				});
+			}else{
+				remainingProducts.push(product);
+			}
+		}
+		console.log(remainingProducts);
+
+		db.allProducts = remainingProducts;
+		db.cart = {}
+
+		setLocalStorage("products", db.allProducts);
+		setLocalStorage("cart", db.cart)
+
+		printCartProducts(db)
+		printProducts(db.allProducts);
+		printTotal(db)		
+	})
+}
+
 async function main() {
 	const db = {
-		allProducts:  await getProducts(),
+		allProducts:  JSON.parse(localStorage.getItem("products")) || await getProducts(),
 		cart: JSON.parse(localStorage.getItem("cart")) || {},
 	};
 	console.log(db.allProducts);
@@ -229,6 +260,8 @@ async function main() {
 	printCartProducts(db)
 	handleOptionsCart(db)
 	printTotal(db)
+	buyCart(db)
+	
 	//load()
 }
 

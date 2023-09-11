@@ -339,6 +339,7 @@ a:hover {
 }
 
 .button_buy{
+    border: none;
     cursor: pointer;
     padding: 1rem;
 }
