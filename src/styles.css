@@ -54,7 +54,7 @@ img {
     width: 100%;
     height: 60px;
     padding: 0 1rem;
-
+    z-index: 400;
 }
 
 .navbar {
@@ -369,7 +369,7 @@ a:hover {
 
     transform: translateX(100%);
     transition: transform 0.5s;
-
+    z-index: 500;
 }
 
 .cart--show {
