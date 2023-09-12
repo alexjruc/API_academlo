@@ -7,6 +7,7 @@
     font-family: 'Roboto', sans-serif;
 }
 
+
 img {
     width: 100%;
     display: block;
@@ -239,7 +240,9 @@ a:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
+
 }
+
 
 .product_img {
     background-color: hsl(0, 0%, 90%);
@@ -309,7 +312,6 @@ a:hover {
 }
 
 .cart {
-    background-color: red;
     position: fixed;
     top: 0;
     right: 0;
@@ -322,6 +324,7 @@ a:hover {
 
     transform: translateX(100%);
     transition: transform 0.5s;
+
 }
 
 .cart--show {
@@ -342,23 +345,25 @@ a:hover {
 
 .cart_shopping{
     background-color: hsl(0, 0%, 100%);
-    background-color: lightcoral;
     padding: 1rem;
     height: 70%;
     overflow-y: scroll;
-
+    
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
+
 .cart_product {
-    background-color: aqua;
+    background-color: hsl(0, 0%, 100%);
+    color: hsl(0, 0%, 15%);
     display: grid;
     grid-template-columns: 1fr 2fr;
     padding: 0.5rem;
     gap: 1rem;
     place-content: center;
+
 }
 
 
@@ -371,18 +376,33 @@ a:hover {
 .cart_product_info{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 0.5rem;
+    justify-content:flex-start;
+    gap: 0.8rem;
+}
+
+.cart_product_info > p{
+    font-size: 0.8rem;
+    color: hsl(0, 0%, 55%);
+}
+
+.cart_product_info > p > span {
+    color: hsl(354, 78%, 60%);
+}
+
+.subtotal{
+    color: hsl(354, 78%, 60%);
+    font-weight: lighter;
 }
 
 .cart_shopping_options {
     display: flex;
     align-items: center;
     gap: 1rem;
+    font-weight: lighter;
 }
 
 .cart_total{
-    background-color: yellow ;
+    background-color: hsl(60, 10%, 96%) ;
     height: 25%;
     padding: 1rem;
     display: flex;
@@ -392,7 +412,8 @@ a:hover {
 }
 
 .cart_total_info {
-    background-color: aqua;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 10px;
     display: flex;
     justify-content: space-between;
     padding: 1rem;
@@ -400,9 +421,15 @@ a:hover {
 }
 
 .button_buy{
+    background-color: hsl(0, 0%, 15%);
+    color: white;
     border: none;
     cursor: pointer;
     padding: 1rem;
+}
+
+.button_buy:hover {
+    background-color: hsl(354, 78%, 60%);
 }
 
 .description{

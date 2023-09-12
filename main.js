@@ -31,14 +31,14 @@ function printProducts(arr) {
 		}else {
 			iconAdd = `<img class="sold_out" src="./soldout.png" alt="">`
 		}
-			htmlAdd += `<div class="product">
-							<img class="product_img" src="${product.image}" alt="${product.category}">
-							<div class="product_info">
-								${iconAdd}
-								<h3>$${product.price}.00 <span>Stock: ${product.quantity}</span></h3>
-								<p class="product_name" id="${product.id}">${product.name}</p>
-							</div>
-						</div>`
+		htmlAdd += `<div class="product">
+						<img class="product_img" src="${product.image}" alt="${product.category}">
+						<div class="product_info">
+							${iconAdd}
+							<h3>$${product.price}.00 <span>Stock: ${product.quantity}</span></h3>
+							<p class="product_name" id="${product.id}">${product.name}</p>
+						</div>
+					</div>`
 		
 	}
 	products.innerHTML = htmlAdd
@@ -130,8 +130,8 @@ function printCartProducts(db) {
 						<img class="cart_product_img" src="${productCart.image}" alt="">
 						<div class="cart_product_info">
 							<h4>${productCart.name}</h4>
-							<p>stock: ${productCart.quantity} | $${productCart.price}.00</p>
-							<h4>subtotal: ${productCart.price * productCart.amount}</h4>
+							<p>stock: ${productCart.quantity} | <span>$${productCart.price}.00</span></p>
+							<h4 class="subtotal">Subtotal: $${productCart.price * productCart.amount}.00</h4>
 							<div class="cart_shopping_options" id="${productCart.id}">
 								<i class='bx bxs-plus-circle'></i>
 								<span>${productCart.amount} units</span>
