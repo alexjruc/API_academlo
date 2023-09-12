@@ -12,6 +12,7 @@ img {
     display: block;
 }
 
+
 .navbar_menu, .bx-sun, .bxs-x-circle {
     display: none;
 }
@@ -34,6 +35,11 @@ img {
     cursor: pointer;
     display: flex;
     gap: 1rem;
+}
+
+.navbar_logo_img {
+    width: 40px;
+
 }
 
 .navbar_menu--show{
