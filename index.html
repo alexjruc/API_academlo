@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="./logo.svg">
+    <link rel="icon" type="image/svg+xml" href="./src/assets/logo.svg">
     <title>Academlo Store by AJUC</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="./styles.css">
-    <script src="./main.js" defer></script>
+    <link rel="stylesheet" href="./src/styles.css">
+    <script src="./src/main.js" defer></script>
 </head>
 
 <body>
@@ -17,14 +17,14 @@
         <nav class="navbar">
             <div class="navbar_logo">
                 <a href="">
-                    <img class="navbar_logo_img" src="./logo.svg" alt="">
+                    <img class="navbar_logo_img" src="./src/assets/logo.svg" alt="">
                 </a>
                 <span>STORE</span>
             </div>
 
             <ul class="navbar_menu">
                 <li>
-                    <a href="#home">Home</a>
+                    <a id="homeNavBar" href="#home">Home</a>
                 </li>
                 <li>
                     <a href="#products">Products</a>
@@ -45,7 +45,7 @@
 
     <div class="loading_page">
         <i>
-            <img class="logo_loading" src="./logo.svg" alt="">
+            <img class="logo_loading" src="./src/assets/logo.svg" alt="">
         </i>
     </div>
 
@@ -62,7 +62,7 @@
                 <h2>New Sweatshirt COLLECTIONS 2024 </h2>
                 <p>Latest arrival of the new Hanes Midweight Crewneck sweatshirt imported from the 2022 series, with a modern design.</p>
                 <h3>$14.00</h3>
-                <button>Show More</button>
+                <button><a href="#products">Show more</a></button>
             </div>
         </div>
 
@@ -186,14 +186,16 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <p class="footer_info">Alex Uceda Cachay</p>
-        <p>alexcachay442016@gmail.com</p>
-        <p>
-            <a class="repo" href="" target="_blank">Mi repositorio</a>
-        </p>
+    <footer id="footer">
+        <div class="footer">
+            <p class="footer_info">Alex Uceda Cachay</p>
+            <p>alexcachay442016@gmail.com</p>
+            <p>
+                <a class="repo" href="" target="_blank">Mi repositorio</a>
+            </p>
+        </div>
     </footer>
-
+    
 </body>
 
 </html>

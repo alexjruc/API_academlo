@@ -1,12 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
+:root {
+    --principalColor: hsl(354, 78%, 60%);
+    --buttonColor: hsl(0, 0%, 15%);
+    --cardColor: hsl(0, 0%, 90%);
+    --titleColor: hsl(0, 0%, 15%);
+    --textColor: hsl(0, 0%, 35%);
+    --textColor-light: hsl(0, 0%, 55%);
+    --bodyColor: hsl(206, 4%, 97%);
+    --containerColor: hsl(0, 0%, 100%);
+    --borderColor: hsl(0, 1%, 19%);
+    --h-header: 3rem;
+    --shadowGeneral: 0 .5rem 1rem rgba(0, 0, 0, .15);
+    /* --z-header-nav: 1000;
+    --z-handle-icon-navbar: 2000;
+    --z-content-cart: 3000;
+    --z-modalproduct: 4000; */
+}
+
+
+.dark-mode {
+    --principalColor: hsl(182, 53%, 74%);
+    --buttonColor: hsl(246, 16%, 12%);
+    --cardColor: hsla(246, 16%, 5%);
+    --titleColor: hsl(0, 0%, 95%);
+    --textColor: hsl(0, 0%, 75%);
+    --bodyColor: hsl(249, 19%, 14%);
+    --containerColor: hsl(246, 16%, 12%);
+    --borderColor: hsl(0, 33%, 97%);
+}
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    
 }
-
 
 img {
     width: 100%;
@@ -19,8 +49,8 @@ img {
 }
 
 .header{
+    background-color: var(--bodyColor);
     position: fixed;
-    background-color: white;
     width: 100%;
     height: 60px;
     padding: 0 1rem;
@@ -28,6 +58,7 @@ img {
 }
 
 .navbar {
+    color: var(--titleColor);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -41,13 +72,14 @@ img {
 }
 
 .navbar_logo_img {
+    color:  var(--principalColor);
     width: 40px;
 
 }
 
 .navbar_menu--show{
     position: fixed;
-    background-color: aqua;
+    background-color: var(--bodyColor);
     width: 100%;
     height: 100%;
 
@@ -56,6 +88,10 @@ img {
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
+}
+
+#homeNavBar {
+    color: var(--principalColor);
 }
 
 .navbar_options{
@@ -76,11 +112,11 @@ img {
 
 .totalAmount {
     position: absolute;
-    background-color: hsl(0, 7%, 14%);
-    color: hsl(0, 25%, 98%);
+    background-color: var(--titleColor);
+    color: var(--cardColor);
     width: 20px;
     height: 20px;
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     bottom: -8px;
     right: -5px;
     border-radius: 50%; 
@@ -92,6 +128,7 @@ img {
 }
 
 .container {
+    background-color: var(--bodyColor);
     display: flex;
     flex-direction: column;
     gap: 4rem;
@@ -119,7 +156,7 @@ img {
 }
 
 .home_image{
-    background-color: hsl(354, 78%, 60%);
+    background-color: var(--principalColor);
     height: 100%;
     display: flex;
     align-items: center;
@@ -133,13 +170,17 @@ img {
 }
 
 .home_info > h2{
-    color: hsl(0, 0%, 15%);
+    color: var(--titleColor);
     font-size: 2rem;
+}
+
+.home_info > p {
+    color: var(--textColor-light);
 }
 
 .home_info > h3{
     font-size: 1.5rem;
-    color:  hsl(354, 78%, 60%) ;
+    color:  var(--principalColor) ;
 }
 
 .home_info > button {
@@ -149,7 +190,10 @@ img {
     font-size: 1rem;
     width: 150px;
     padding: 0.8rem;
-    background-color: hsl(0, 0%, 15%);
+    background-color: var(--buttonColor);
+}
+
+.home_info > button > a {
     color: white;
 }
 
@@ -166,17 +210,10 @@ img {
     
 }
 
-
 .loading_page--hidden{
     opacity: 0;
     visibility: hidden;
 }
-
-.bxl-twitch {
-    font-size: 8rem;
-    color: mediumorchid;
-}
-
 
 
 li {
@@ -185,7 +222,7 @@ li {
 
 a {
     text-decoration: none;
-    color: hsl(0, 0%, 35%);
+    color: var(--textColor);
     cursor: pointer;
 }
 
@@ -196,7 +233,7 @@ a:hover {
 .filter_products{
     max-width: 800px;
     margin: 0 auto;
-    background-color: hsl(206, 4%, 97%);
+    background-color: var(--bodyColor);
 
     display: flex;
     justify-content: center;
@@ -205,7 +242,9 @@ a:hover {
 }
 
 .filter{
-    background-color: hsl(206, 4%, 97%) ;
+    background-color: var(--bodyColor) ;
+    color: var(--textColor);
+    box-shadow: var(--shadowGeneral);
     cursor: pointer;
     width: 150px;
     padding: 0.5rem;
@@ -223,17 +262,17 @@ a:hover {
 }
 
 .filter--show {
-    background-color: black;
+    background-color: var(--buttonColor);
     color: white;
 }
 
 .filter:hover{
-    background-color: black;
+    background-color: var(--buttonColor);
     color: white;
 }
 
 .products {
-    background-color: hsl(206, 4%, 97%);
+    background-color: var(--bodyColor);
     max-width: 1024px;
     margin: 0 auto;
     padding: 1rem;
@@ -243,14 +282,17 @@ a:hover {
 
 }
 
+.container_product_img{
+    background-color: var(--cardColor)
+}
 
 .product_img {
-    background-color: hsl(0, 0%, 90%);
+    background-color: var(--cardColor);
     transition: transform 0.5s;
 }
 
 .product_img:hover {
-    transform: translateY(-0.8rem);
+    transform: translateY(-0.5rem);
 }
 
 .product {
@@ -259,7 +301,8 @@ a:hover {
 }
 
 .product_info {
-    background-color: hsl(0, 0%, 100%);
+    background-color: var(--containerColor);
+    color: var(--titleColor);
     position: relative;
     height: 5rem;
     display: flex;
@@ -270,11 +313,11 @@ a:hover {
 
 .product_name:hover{
     cursor: pointer;
-    color: hsl(354, 78%, 60%);
+    color: var(--principalColor);
 }
 
 .bx-plus{
-    background-color: white;
+    background-color: var(--bodyColor);
     cursor: pointer;
     position: absolute;
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
@@ -289,14 +332,16 @@ a:hover {
 }
 
 .bx-plus:hover {
-    color: white;
-    background-color: hsl(354, 78%, 60%);
+    color: var(--bodyColor);
+    background-color: var(--principalColor);
 }
 
 .sold_out {
-    width: 60px;
+    background-color: hsl(0, 14%, 99%);
+    border-radius: 50%;
+    width: 50px;
     position: absolute;
-    right: 0;
+    right: 8px;
     top: -30px;
 }
 
@@ -331,12 +376,13 @@ a:hover {
     transform: translateX(0%);
 }
 .cart_close{
-    background-color: white;
+    background-color: var(--containerColor);
     position: relative;
     height: 5%;
 }
 
 .bx-x {
+    color: var(--titleColor);
     position: absolute;
     font-size: 2rem;
     right: 0;
@@ -344,7 +390,7 @@ a:hover {
 
 
 .cart_shopping{
-    background-color: hsl(0, 0%, 100%);
+    background-color: var(--containerColor);
     padding: 1rem;
     height: 70%;
     overflow-y: scroll;
@@ -356,8 +402,8 @@ a:hover {
 
 
 .cart_product {
-    background-color: hsl(0, 0%, 100%);
-    color: hsl(0, 0%, 15%);
+    background-color: var(--containerColor);
+    color: var(--titleColor);
     display: grid;
     grid-template-columns: 1fr 2fr;
     padding: 0.5rem;
@@ -368,8 +414,8 @@ a:hover {
 
 
 .cart_product_img {
-    background-color: hsl(0, 0%, 90%) ;
-    border: 2px hsl(354, 78%, 60%) solid;
+    background-color: var(--cardColor) ;
+    border: 2px var(--principalColor) solid;
     border-radius: 1rem;
 }
 
@@ -386,11 +432,11 @@ a:hover {
 }
 
 .cart_product_info > p > span {
-    color: hsl(354, 78%, 60%);
+    color: var(--principalColor);
 }
 
 .subtotal{
-    color: hsl(354, 78%, 60%);
+    color: var(--principalColor);
     font-weight: lighter;
 }
 
@@ -402,9 +448,10 @@ a:hover {
 }
 
 .cart_total{
-    background-color: hsl(60, 10%, 96%) ;
+    background-color: var(--containerColor) ;
     height: 25%;
     padding: 1rem;
+    border-top: 1px var(--borderColor) solid;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -412,7 +459,8 @@ a:hover {
 }
 
 .cart_total_info {
-    background-color: hsl(0, 0%, 100%);
+    background-color: var(--containerColor);
+    color: var(--titleColor);
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
@@ -421,7 +469,8 @@ a:hover {
 }
 
 .button_buy{
-    background-color: hsl(0, 0%, 15%);
+    background-color: var(--buttonColor);
+    box-shadow: var(--shadowGeneral);
     color: white;
     border: none;
     cursor: pointer;
@@ -429,7 +478,7 @@ a:hover {
 }
 
 .button_buy:hover {
-    background-color: hsl(354, 78%, 60%);
+    background-color: var(--principalColor);
 }
 
 .description{
@@ -457,7 +506,8 @@ a:hover {
 
 
 .description_product {
-    background-color: white;
+    background-color: var(--bodyColor);
+    color: var(--titleColor);
     position: relative;
     max-width: 350px;
 
@@ -497,11 +547,14 @@ a:hover {
 }
 
 .sold_out_description{
-    width: 3.5rem;
+    background-color: white;
+    border-radius: 50%;
+    width: 3rem;
 }
 
 .container_info {
-    background-color: hsl(0, 0%, 90%);
+    background-color: var(--cardColor);
+    color: var(--titleColor);
     padding: 4rem 2rem;
     display: flex;
     flex-direction: column;
@@ -528,10 +581,14 @@ a:hover {
     gap: 0.5rem;
 }
 
+#footer {
+    background-color: var(--cardColor);
+    padding: 3rem
+}
+
 .footer {
-    background-color: hsl(354, 78%, 60%);
-    color: white;
-    margin: 30px;
+    background-color: var(--principalColor);
+    color: var(--buttonColor);
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -541,7 +598,7 @@ a:hover {
 }
 
 .repo {
-    color: hsl(0, 0%, 17%);
+    color:var(--titleColor);
 }
 
 @media (min-width: 700px) {
@@ -567,7 +624,7 @@ a:hover {
     }
 
     .cart {
-        width: 400px;
+        width: 450px;
     }
 
     .home {

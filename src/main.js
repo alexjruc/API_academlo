@@ -29,10 +29,12 @@ function printProducts(arr) {
 		if (product.quantity) {
 			iconAdd = `<i class='bx bx-plus' id="${product.id}"></i>`
 		}else {
-			iconAdd = `<img class="sold_out" src="./soldout.png" alt="">`
+			iconAdd = `<img class="sold_out" src="./src/assets/soldout.png" alt="">`
 		}
 		htmlAdd += `<div class="product">
-						<img class="product_img" src="${product.image}" alt="${product.category}">
+						<div class="container_product_img">
+							<img class="product_img" src="${product.image}" alt="${product.category}">
+						</div>
 						<div class="product_info">
 							${iconAdd}
 							<h3>$${product.price}.00 <span>Stock: ${product.quantity}</span></h3>
@@ -275,7 +277,7 @@ function printDescription(db) {
 			if (productFound.quantity) {
 				iconAdd = `<i class='bx bxs-plus-circle add_from_description' id="${productFound.id}"></i>`
 			}else {
-				iconAdd = `<img class="sold_out_description" src="./soldout.png" alt="">`
+				iconAdd = `<img class="sold_out_description" src="./src/assets/soldout.png" alt="">`
 			}
 			
 			html = `<div class="description_close">
@@ -324,6 +326,22 @@ function handleAddFromDescription(db) {
 	})
 }
 
+function darkLightMode() {
+	const darkMode = document.querySelector(".bx-moon")
+	const lightMode = document.querySelector(".bx-sun")
+
+	darkMode.addEventListener("click", () => {
+		darkMode.style.display = "none";
+		lightMode.style.display = "block"
+		document.body.classList.toggle("dark-mode");
+	})
+	lightMode.addEventListener("click", () => {
+		lightMode.style.display = "none";
+		darkMode.style.display = "block"
+		document.body.classList.toggle("dark-mode");
+	})
+}
+
 async function main() {
 	const db = {
 		allProducts:  JSON.parse(localStorage.getItem("products")) || await getProducts(),
@@ -344,6 +362,7 @@ async function main() {
 	
 	
 	load()
+	darkLightMode();
 }
 
 
