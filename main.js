@@ -36,7 +36,7 @@ function printProducts(arr) {
 							<div class="product_info">
 								${iconAdd}
 								<h3>$${product.price}.00 <span>Stock: ${product.quantity}</span></h3>
-								<p>${product.name}</p>
+								<p class="product_name" id="${product.id}">${product.name}</p>
 							</div>
 						</div>`
 		
@@ -252,6 +252,39 @@ function buyCart(db) {
 	})
 }
 
+function printDescription(db) {
+	const products = document.querySelector(".products")
+	const description = document.querySelector(".description")
+	const descriptionProduct = document.querySelector(".description_product")
+
+	products.addEventListener("click", (e) => {
+		if(e.target.classList.contains("product_name")){
+			description.classList.add("description--show")
+
+			const id = Number(e.target.id);
+			let productFound = db.allProducts.find((product) => product.id === id);
+			
+			html = `<div class="description_close">
+						<i class='bx bx-x'></i>
+					</div>
+					<img src="${productFound.image}" alt="">
+					<h3>${productFound.name}</h3>
+					<p>${productFound.description}</p>
+					<div class="description_product_options">
+						<span>$${productFound.price}.00</span>
+						<i class='bx bxs-plus-circle'></i>
+						<span>Stock:${productFound.quantity}</span>
+					</div>`
+			descriptionProduct.innerHTML = html
+		}
+	})
+	description.addEventListener("click", (e) => {
+		if(e.target.classList.contains("bx-x")){
+			description.classList.remove("description--show")
+		}
+	})
+}
+
 async function main() {
 	const db = {
 		allProducts:  JSON.parse(localStorage.getItem("products")) || await getProducts(),
@@ -259,6 +292,7 @@ async function main() {
 	};
 	console.log(db.allProducts);
 	printProducts(db.allProducts);
+	printDescription(db);
 	handleFilter(db.allProducts);
 	openCloseMenu()
 	handleShowCart()
@@ -267,6 +301,7 @@ async function main() {
 	handleOptionsCart(db)
 	printTotal(db)
 	buyCart(db)
+
 	
 	load()
 }

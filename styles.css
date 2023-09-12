@@ -22,6 +22,7 @@ img {
     background-color: white;
     width: 100%;
     height: 60px;
+    padding: 0 1rem;
 
 }
 
@@ -34,6 +35,7 @@ img {
 .navbar_logo{
     cursor: pointer;
     display: flex;
+    align-items: center;    
     gap: 1rem;
 }
 
@@ -59,6 +61,7 @@ img {
     cursor: pointer;
     font-size: 1.3rem;
     display: flex;
+    align-items: center;
     gap: 1rem;
 }
 
@@ -241,6 +244,11 @@ a:hover {
     padding: 1rem;
 }
 
+.product_name:hover{
+    cursor: pointer;
+    color: hsl(354, 78%, 60%);
+}
+
 .bx-plus{
     background-color: white;
     cursor: pointer;
@@ -257,6 +265,7 @@ a:hover {
 }
 
 .bx-plus:hover {
+    color: white;
     background-color: hsl(354, 78%, 60%);
 }
 
@@ -375,6 +384,63 @@ a:hover {
     padding: 1rem;
 }
 
+.description{
+    background-color: hsl(0, 0%, 3%, 50%);
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+
+}
+
+.description--show{
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.description_product {
+    background-color: white;
+    position: relative;
+    max-width: 350px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+
+    border-radius: 1rem;
+}
+
+.description_close{
+    position: absolute;
+    top: 0;
+    right: 0;
+
+}
+
+.description_product_options {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+
+}
+
+.bxs-plus-circle {
+    font-size: 1.8rem;
+    flex-grow: 1;
+}
+
 
 .container_info {
     background-color: hsl(0, 0%, 90%);
@@ -433,6 +499,7 @@ a:hover {
 
     .navbar_menu {
         display: flex;
+        align-items: center;
         gap: 1rem;
         flex-grow: 1;
     }
