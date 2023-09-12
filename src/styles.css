@@ -207,7 +207,7 @@ img {
 
     opacity: 1;
     visibility: visible ;
-    z-index: 500;
+    z-index: 600;
 }
 
 .loading_page--hidden{
@@ -496,7 +496,7 @@ a:hover {
     opacity: 0;
     visibility: hidden;
 
-
+    z-index: 600;
 }
 
 .description--show{
