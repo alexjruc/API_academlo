@@ -66,6 +66,18 @@ img {
     z-index: 1000;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.container_products{
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
 
 .home {
     padding-top: calc(60px + 1rem);
@@ -161,15 +173,16 @@ a:hover {
     margin: 0 auto;
     background-color: hsl(206, 4%, 97%);
 
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 1rem;
 }
 
 .filter{
     background-color: hsl(206, 4%, 97%) ;
     cursor: pointer;
-    max-width: 200px;
+    width: 150px;
     padding: 0.5rem;
     display: flex;
     flex-direction: column;
@@ -206,6 +219,11 @@ a:hover {
 
 .product_img {
     background-color: hsl(0, 0%, 90%);
+    transition: transform 0.5s;
+}
+
+.product_img:hover {
+    transform: translateY(-0.8rem);
 }
 
 .product {
