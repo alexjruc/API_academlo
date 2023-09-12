@@ -327,6 +327,7 @@ function handleAddFromDescription(db) {
 }
 
 function darkLightMode() {
+	
 	const darkMode = document.querySelector(".bx-moon")
 	const lightMode = document.querySelector(".bx-sun")
 
@@ -340,6 +341,7 @@ function darkLightMode() {
 		darkMode.style.display = "block"
 		document.body.classList.toggle("dark-mode");
 	})
+	
 }
 
 async function main() {
@@ -359,10 +361,10 @@ async function main() {
 	handleOptionsCart(db)
 	printTotal(db)
 	handleBuyCart(db)
+	darkLightMode();
 	
 	
 	load()
-	darkLightMode();
 }
 
 

@@ -198,16 +198,16 @@ img {
 }
 
 .loading_page {
+    background-color: var(--bodyColor);
     position: fixed;
     width: 100%;
     min-height: 100vh;
-    background-color: white;
     display: grid;
     place-content: center;
 
     opacity: 1;
     visibility: visible ;
-    
+    z-index: 500;
 }
 
 .loading_page--hidden{
