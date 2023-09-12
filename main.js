@@ -160,6 +160,9 @@ function printTotal(db) {
 
 		totalItems.textContent = `${items} items`
 		totalCash.textContent = `$${cash}.00`
+
+	const totalAmount = document.querySelector(".totalAmount")
+	totalAmount.textContent = `${items}`
 }
 
 function handlerCartProdcuts(db) {
@@ -222,10 +225,15 @@ function handleOptionsCart(db) {
 	})
 }
 
-function buyCart(db) {
+function handleBuyCart(db) {
 	const buy = document.querySelector(".button_buy");
 	
 	buy.addEventListener("click", () => {
+		if(Object.values(db.cart).length === 0) return alert("Elige algun articulo que desees comprar, por favor!");
+
+		const response = confirm("Seguro deseas comprar?");
+		if(!response) return;
+
 		let remainingProducts = [];
 		
 		for (const product of db.allProducts) {
@@ -263,6 +271,12 @@ function printDescription(db) {
 
 			const id = Number(e.target.id);
 			let productFound = db.allProducts.find((product) => product.id === id);
+
+			if (productFound.quantity) {
+				iconAdd = `<i class='bx bxs-plus-circle add_from_description' id="${productFound.id}"></i>`
+			}else {
+				iconAdd = `<img class="sold_out_description" src="./soldout.png" alt="">`
+			}
 			
 			html = `<div class="description_close">
 						<i class='bx bx-x'></i>
@@ -271,8 +285,10 @@ function printDescription(db) {
 					<h3>${productFound.name}</h3>
 					<p>${productFound.description}</p>
 					<div class="description_product_options">
-						<span>$${productFound.price}.00</span>
-						<i class='bx bxs-plus-circle'></i>
+						<div class="add_product">
+							<span>$${productFound.price}.00</span>
+							${iconAdd}
+						</div>
 						<span>Stock:${productFound.quantity}</span>
 					</div>`
 			descriptionProduct.innerHTML = html
@@ -285,6 +301,29 @@ function printDescription(db) {
 	})
 }
 
+function handleAddFromDescription(db) {
+	document.querySelector(".description_product").addEventListener("click" , (e) => {
+		if(e.target.classList.contains("add_from_description")){
+			const id = Number(e.target.id);
+
+			let productFound = db.allProducts.find((product) => product.id === id);
+			
+			if(db.cart[id]){
+				if(db.cart[id].amount === db.cart[id].quantity)
+				return alert(`No hay mas en stock`)
+				db.cart[id].amount += 1
+			}else {
+				db.cart[id] = {...productFound,
+								amount :1
+							}
+			}
+		}
+		setLocalStorage("cart", db.cart)
+		printCartProducts(db);
+		printTotal(db)	
+	})
+}
+
 async function main() {
 	const db = {
 		allProducts:  JSON.parse(localStorage.getItem("products")) || await getProducts(),
@@ -293,6 +332,7 @@ async function main() {
 	console.log(db.allProducts);
 	printProducts(db.allProducts);
 	printDescription(db);
+	handleAddFromDescription(db)
 	handleFilter(db.allProducts);
 	openCloseMenu()
 	handleShowCart()
@@ -300,8 +340,8 @@ async function main() {
 	printCartProducts(db)
 	handleOptionsCart(db)
 	printTotal(db)
-	buyCart(db)
-
+	handleBuyCart(db)
+	
 	
 	load()
 }
