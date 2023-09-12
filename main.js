@@ -1,7 +1,7 @@
-// function load() {
-// 	const loading = document.querySelector(".loading_page");
-// 	loading.classList.add("loading_page--hidden");
-// }
+function load() {
+	const loading = document.querySelector(".loading_page");
+	loading.classList.add("loading_page--hidden");
+}
 
 async function getProducts() {
 	try {
@@ -23,12 +23,18 @@ function setLocalStorage(key, value) {
 function printProducts(arr) {
 	const products = document.querySelector(".products");
 
+	
 	htmlAdd = "";
 	for (const product of arr) {
+		if (product.quantity) {
+			iconAdd = `<i class='bx bx-plus' id="${product.id}"></i>`
+		}else {
+			iconAdd = `<img class="sold_out" src="./soldout.png" alt="">`
+		}
 			htmlAdd += `<div class="product">
 							<img class="product_img" src="${product.image}" alt="${product.category}">
 							<div class="product_info">
-								<i class='bx bx-plus' id="${product.id}"></i>
+								${iconAdd}
 								<h3>$${product.price}.00 <span>Stock: ${product.quantity}</span></h3>
 								<p>${product.name}</p>
 							</div>
@@ -262,7 +268,7 @@ async function main() {
 	printTotal(db)
 	buyCart(db)
 	
-	//load()
+	load()
 }
 
 

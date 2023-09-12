@@ -236,6 +236,13 @@ a:hover {
     background-color: hsl(354, 78%, 60%);
 }
 
+.sold_out {
+    width: 60px;
+    position: absolute;
+    right: 0;
+    top: -30px;
+}
+
 .product > .product_info > h3 {
     display: flex;
     align-items: center;
