@@ -362,7 +362,15 @@ async function main() {
 	printTotal(db)
 	handleBuyCart(db)
 	darkLightMode();
-	
+
+		
+	window.addEventListener("scroll" , () => {
+			if(window.scrollY > 60){
+			document.querySelector(".header").style.backgroundColor = "white";
+		}else {
+			document.querySelector(".header").style.backgroundColor = "transparent"
+		}
+	})
 	
 	load()
 }
