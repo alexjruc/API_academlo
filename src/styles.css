@@ -275,8 +275,6 @@ a:hover {
 
 .products {
     background-color: var(--bodyColor);
-    max-width: 1024px;
-    margin: 0 auto;
     padding: 1rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

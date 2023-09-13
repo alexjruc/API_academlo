@@ -352,7 +352,7 @@ function darkLightMode() {
 		document.body.classList.add("dark-mode");
 	}
 	if(JSON.parse(localStorage.getItem("theme")) === "light"){
-		document.body.classList.remove("dark-mode")
+		document.body.classList.remove("dark-mode");
 	}
 
 	moon.addEventListener("click", () => {
@@ -373,7 +373,7 @@ function darkLightMode() {
 
 function handleNavbarAnimtion() {
 
-	window.addEventListener("scroll" , () => {
+	window.addEventListener("scroll", () => {
 		if(window.scrollY > 60){
 			document.querySelector(".header").classList.add("header--show");
 		}else {
@@ -388,7 +388,7 @@ async function main() {
 		allProducts:  JSON.parse(localStorage.getItem("products")) || await getProducts(),
 		cart: JSON.parse(localStorage.getItem("cart")) || {},
 	};
-	console.log(db.allProducts);
+	
 	printProducts(db.allProducts);
 	openCloseMenu()
 	printDescription(db);
