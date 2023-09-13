@@ -109,6 +109,21 @@ function openCloseMenu() {
 		openMenu.style.display = "block"
 		menu.classList.remove("navbar_menu--show")
 	})
+	const homeNavBar = document.querySelector("#homeNavBar")
+	const productsNavBar = document.querySelector("#productsNavBar")	
+	homeNavBar.addEventListener("click", function () {
+		closeMenu.style.display = "none"
+		openMenu.style.display = "block"
+		menu.classList.remove("navbar_menu--show")
+	})
+
+	productsNavBar.addEventListener("click", function () {
+		closeMenu.style.display = "none"
+		openMenu.style.display = "block"
+		menu.classList.remove("navbar_menu--show")
+	})
+
+
 }
 function handleShowCart() {
 	const bagShopping = document.querySelector(".bx-shopping-bag");
@@ -363,10 +378,10 @@ async function main() {
 	};
 	console.log(db.allProducts);
 	printProducts(db.allProducts);
+	openCloseMenu()
 	printDescription(db);
 	handleAddFromDescription(db)
 	handleFilter(db.allProducts);
-	openCloseMenu()
 	handleShowCart()
 	handlerCartProdcuts(db);
 	printCartProducts(db)
