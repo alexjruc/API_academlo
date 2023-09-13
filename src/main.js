@@ -342,20 +342,32 @@ function handleAddFromDescription(db) {
 }
 
 function darkLightMode() {
-	
-	const darkMode = document.querySelector(".bx-moon")
-	const lightMode = document.querySelector(".bx-sun")
 
-	darkMode.addEventListener("click", () => {
-		darkMode.style.display = "none";
-		lightMode.style.display = "block"
-		document.body.classList.toggle("dark-mode");
+	const sun = document.querySelector(".bx-sun")
+	const moon = document.querySelector(".bx-moon")
+
+	if(JSON.parse(localStorage.getItem("theme")) === "dark"){
+		moon.style.display = "none";
+		sun.style.display = "block";
+		document.body.classList.add("dark-mode");
+	}
+	if(JSON.parse(localStorage.getItem("theme")) === "light"){
+		document.body.classList.remove("dark-mode")
+	}
+
+	moon.addEventListener("click", () => {
+		moon.style.display = "none";
+		sun.style.display = "block"
+		document.body.classList.add("dark-mode");
+		setLocalStorage("theme", "dark")
 	})
-	lightMode.addEventListener("click", () => {
-		lightMode.style.display = "none";
-		darkMode.style.display = "block"
-		document.body.classList.toggle("dark-mode");
+	sun.addEventListener("click", () => {
+		sun.style.display = "none";
+		moon.style.display = "block"
+		document.body.classList.remove("dark-mode");
+		setLocalStorage("theme", "light")
 	})
+	
 	
 }
 
@@ -388,9 +400,9 @@ async function main() {
 	handleOptionsCart(db)
 	printTotal(db)
 	handleBuyCart(db)
-	darkLightMode();
 	handleNavbarAnimtion()
-	
+	darkLightMode();
+		
 	load()
 }
 

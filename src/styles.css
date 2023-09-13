@@ -11,7 +11,7 @@
     --containerColor: hsl(0, 0%, 100%);
     --borderColor: hsl(0, 1%, 19%);
     --h-header: 3rem;
-    --shadowGeneral: 0 .5rem 1rem rgba(0, 0, 0, .15);
+    --boxShadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
 
 }
 
@@ -246,7 +246,7 @@ a:hover {
 .filter{
     background-color: var(--bodyColor) ;
     color: var(--textColor);
-    box-shadow: var(--shadowGeneral);
+    box-shadow: var(--boxShadow);
     cursor: pointer;
     width: 150px;
     padding: 0.5rem;
@@ -472,7 +472,7 @@ a:hover {
 
 .button_buy{
     background-color: var(--buttonColor);
-    box-shadow: var(--shadowGeneral);
+    box-shadow: var(--boxShadow);
     color: white;
     border: none;
     cursor: pointer;
