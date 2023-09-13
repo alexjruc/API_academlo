@@ -344,6 +344,18 @@ function darkLightMode() {
 	
 }
 
+function handleNavbarAnimtion() {
+
+	window.addEventListener("scroll" , () => {
+		if(window.scrollY > 60){
+			document.querySelector(".header").classList.add("header--show");
+		}else {
+			document.querySelector(".header").classList.remove("header--show");
+		}
+	})
+	
+}
+
 async function main() {
 	const db = {
 		allProducts:  JSON.parse(localStorage.getItem("products")) || await getProducts(),
@@ -362,15 +374,7 @@ async function main() {
 	printTotal(db)
 	handleBuyCart(db)
 	darkLightMode();
-
-		
-	window.addEventListener("scroll" , () => {
-			if(window.scrollY > 60){
-			document.querySelector(".header").style.backgroundColor = "white";
-		}else {
-			document.querySelector(".header").style.backgroundColor = "transparent"
-		}
-	})
+	handleNavbarAnimtion()
 	
 	load()
 }

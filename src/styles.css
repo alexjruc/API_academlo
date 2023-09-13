@@ -52,6 +52,12 @@ img {
     height: 60px;
     padding: 0 1rem;
     z-index: 400;
+
+    transition: background-color 0.5s;
+}
+
+.header--show {
+    background-color: var(--bodyColor);
 }
 
 .navbar {
