@@ -1,6 +1,19 @@
-function load() {
-	const loading = document.querySelector(".loading_page");
-	loading.classList.add("loading_page--hidden");
+function loading() {
+
+	const sun = document.querySelector(".bx-sun")
+	const moon = document.querySelector(".bx-moon")
+
+	if(JSON.parse(localStorage.getItem("theme")) === "dark"){
+		moon.style.display = "none";
+		sun.style.display = "block";
+		document.body.classList.add("dark-mode");
+		document.querySelector(".loading_page").classList.add("loading_page--hidden");
+	}
+	if(JSON.parse(localStorage.getItem("theme")) === "light"){
+		document.body.classList.remove("dark-mode");
+		document.querySelector(".loading_page").classList.add("loading_page--hidden");
+	}
+		
 }
 
 async function getProducts() {
@@ -346,15 +359,6 @@ function darkLightMode() {
 	const sun = document.querySelector(".bx-sun")
 	const moon = document.querySelector(".bx-moon")
 
-	if(JSON.parse(localStorage.getItem("theme")) === "dark"){
-		moon.style.display = "none";
-		sun.style.display = "block";
-		document.body.classList.add("dark-mode");
-	}
-	if(JSON.parse(localStorage.getItem("theme")) === "light"){
-		document.body.classList.remove("dark-mode");
-	}
-
 	moon.addEventListener("click", () => {
 		moon.style.display = "none";
 		sun.style.display = "block"
@@ -389,6 +393,7 @@ async function main() {
 		cart: JSON.parse(localStorage.getItem("cart")) || {},
 	};
 	
+	darkLightMode();
 	printProducts(db.allProducts);
 	openCloseMenu()
 	printDescription(db);
@@ -401,9 +406,9 @@ async function main() {
 	printTotal(db)
 	handleBuyCart(db)
 	handleNavbarAnimtion()
-	darkLightMode();
-		
-	load()
+	
+
+	loading()
 }
 
 

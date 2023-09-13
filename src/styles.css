@@ -6,12 +6,11 @@
     --cardColor: hsl(0, 0%, 90%);
     --titleColor: hsl(0, 0%, 15%);
     --textColor: hsl(0, 0%, 35%);
-    --textColor-light: hsl(0, 0%, 55%);
     --bodyColor: hsl(206, 4%, 97%);
     --containerColor: hsl(0, 0%, 100%);
     --borderColor: hsl(0, 1%, 19%);
-    --h-header: 3rem;
     --boxShadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+    --textColor-light: hsl(0, 1%, 52%);
 
 }
 
@@ -39,6 +38,35 @@ img {
     width: 100%;
     display: block;
 }
+
+body::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--principalColor);
+    height: 100px;
+    border-radius: 20px;
+}
+
+.loading_page {
+    background-color: var(--bodyColor);
+    position: fixed;
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+
+    opacity: 1;
+    visibility: visible ;
+    z-index: 600;
+}
+
+.loading_page--hidden{
+    opacity: 0;
+    visibility: hidden;
+}
+
 
 
 .navbar_menu, .bx-sun, .bxs-x-circle {
@@ -206,23 +234,6 @@ img {
     color: white;
 }
 
-.loading_page {
-    background-color: var(--bodyColor);
-    position: fixed;
-    width: 100%;
-    min-height: 100vh;
-    display: grid;
-    place-content: center;
-
-    opacity: 1;
-    visibility: visible ;
-    z-index: 600;
-}
-
-.loading_page--hidden{
-    opacity: 0;
-    visibility: hidden;
-}
 
 
 li {
@@ -408,6 +419,17 @@ a:hover {
 }
 
 
+.cart_shopping::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+.cart_shopping::-webkit-scrollbar-thumb {
+    background-color: var(--principalColor);
+    border-radius: 20px;
+    max-height: 20px;
+}
+
+
 .cart_product {
     background-color: var(--containerColor);
     color: var(--titleColor);
@@ -459,6 +481,7 @@ a:hover {
     height: 25%;
     padding: 1rem;
     border-top: 1px var(--borderColor) solid;
+    border-left: 1px var(--borderColor) solid;
     display: flex;
     flex-direction: column;
     justify-content: center;
