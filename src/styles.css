@@ -683,6 +683,11 @@ a {
     .home_info > h2 {
         font-size: 3rem;
     }
+
+    .products{
+        max-width: 1024px;
+        margin: 0 auto;
+    }
     
     
     .container_info {
