@@ -632,6 +632,10 @@ a {
     color:var(--titleColor);
 }
 
+.repo:hover {
+    color: black;
+}
+
 @media (min-width: 700px) {
 
 
