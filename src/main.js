@@ -341,7 +341,7 @@ function handleAddFromDescription(db) {
 	})
 }
 
-function darkLightMode() {
+function darkLightMode(){
 
 	const sun = document.querySelector(".bx-sun")
 	const moon = document.querySelector(".bx-moon")
@@ -383,6 +383,16 @@ function handleNavbarAnimtion() {
 	
 }
 
+function getTheme() {
+	if(JSON.parse(localStorage.getItem("theme")) === "dark"){
+		document.body.classList.add("dark-mode");
+	}
+	if(JSON.parse(localStorage.getItem("theme")) === "light"){
+		document.body.classList.remove("dark-mode");
+	}
+
+}
+
 async function main() {
 	const db = {
 		allProducts:  JSON.parse(localStorage.getItem("products")) || await getProducts(),
@@ -407,6 +417,6 @@ async function main() {
 	loading();
 }
 
-
+getTheme();
 window.addEventListener("load", main);
 
